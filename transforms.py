@@ -5,7 +5,6 @@ import numpy as np
 import numbers
 import math
 import torch
-import cv2
 
 
 class GroupRandomCrop(object):
