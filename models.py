@@ -8,7 +8,7 @@ class TSN(nn.Module):
     def __init__(self, num_class, num_segments, modality,
                  base_model='resnet101', new_length=None,
                  consensus_type='avg', before_softmax=True,
-                 dropout=0.8, rnn=None, rnn_mem_size=512,
+                 dropout=0.8,
                  crop_num=1, partial_bn=True):
         super(TSN, self).__init__()
         self.modality = modality
@@ -38,7 +38,7 @@ TSN Configurations:
 
         self._prepare_base_model(base_model)
 
-        feature_dim = self._prepare_tsn(num_class, rnn, rnn_mem_size)
+        feature_dim = self._prepare_tsn(num_class)
 
         if self.modality == 'Flow':
             print("Converting the ImageNet model to a flow init model")
@@ -58,7 +58,7 @@ TSN Configurations:
         if partial_bn:
             self.partialBN(True)
 
-    def _prepare_tsn(self, num_class, rnn, rnn_mem_size):
+    def _prepare_tsn(self, num_class):
         feature_dim = getattr(self.base_model, self.base_model.last_layer_name).in_features
         if self.dropout == 0:
             setattr(self.base_model, self.base_model.last_layer_name, nn.Linear(feature_dim, num_class))
@@ -159,14 +159,9 @@ TSN Configurations:
                         normal_bias.append(ps[1])
             elif isinstance(m, torch.nn.Linear):
                 ps = list(m.parameters())
-                if self.consensus_type == 'rnn':
-                    rnn_weights.append(ps[0])
-                    if len(ps) == 2:
-                        rnn_weights.append(ps[1])
-                else:
-                    normal_weight.append(ps[0])
-                    if len(ps) == 2:
-                        normal_bias.append(ps[1])
+                normal_weight.append(ps[0])
+                if len(ps) == 2:
+                    normal_bias.append(ps[1])
                   
             elif isinstance(m, torch.nn.BatchNorm1d):
                 bn.extend(list(m.parameters()))
