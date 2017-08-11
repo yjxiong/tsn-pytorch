@@ -33,6 +33,16 @@ python main.py ucf101 Flow <ucf101_flow_train_list> <ucf101_flow_val_list> \
    --snapshot_pref ucf101_bninception_ --flow_pref flow_  
 ```
 
+For RGB-diff models:
+
+```bash
+python main.py ucf101 RGBDiff <ucf101_rgb_train_list> <ucf101_rgb_val_list> \
+   --arch BNInception --num_segments 7 \
+   --gb 40 --lr 0.001 --lr_steps 80 160 --epochs 180 \
+   -b 128 -j 8 \
+   --snapshot_pref ucf101_bninception_ 
+```
+
 ## Testing
 
 After training, there will checkpoints saved by pytorch, for example `ucf101_bninception_rgb_checkpoint.pth`.
