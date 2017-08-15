@@ -108,7 +108,7 @@ def main():
         print(('group: {} has {} params, lr_mult: {}, decay_mult: {}'.format(
             group['name'], len(group['params']), group['lr_mult'], group['decay_mult'])))
 
-    optimizer = torch.optim.SGD(policies[:-1],
+    optimizer = torch.optim.SGD(policies,
                                 args.lr,
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay)
