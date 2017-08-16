@@ -48,8 +48,7 @@ else:
 net = TSN(num_class, 1, args.modality,
           base_model=args.arch,
           consensus_type=args.crop_fusion_type,
-          dropout=args.dropout, rnn=args.rnn,
-          rnn_mem_size=args.rnn_mem_size)
+          dropout=args.dropout)
 
 checkpoint = torch.load(args.weights)
 print("model epoch {} best prec@1: {}".format(checkpoint['epoch'], checkpoint['best_prec1']))
