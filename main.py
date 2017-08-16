@@ -80,7 +80,7 @@ def main():
                        normalize,
                    ])),
         batch_size=args.batch_size, shuffle=True,
-        num_workers=args.workers, pin_memory=False)
+        num_workers=args.workers, pin_memory=True)
 
     val_loader = torch.utils.data.DataLoader(
         TSNDataSet("", args.val_list, num_segments=args.num_segments,
@@ -96,7 +96,7 @@ def main():
                        normalize,
                    ])),
         batch_size=args.batch_size, shuffle=False,
-        num_workers=args.workers, pin_memory=False)
+        num_workers=args.workers, pin_memory=True)
 
     # define loss function (criterion) and optimizer
     if args.loss_type == 'nll':
