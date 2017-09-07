@@ -67,7 +67,7 @@ class TSNDataSet(data.Dataset):
         if average_duration > 0:
             offsets = np.multiply(list(range(self.num_segments)), average_duration) + randint(average_duration, size=self.num_segments)
         elif record.num_frames > self.num_segments:
-            offsets = np.sort(randint(record.num_frames - self.new_length + 1))
+            offsets = np.sort(randint(record.num_frames - self.new_length + 1, size=self.num_segments))
         else:
             offsets = np.zeros((self.num_segments,))
         return offsets + 1
