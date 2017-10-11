@@ -55,7 +55,9 @@ class GroupRandomHorizontalFlip(object):
             if self.is_flow:
                 for i in range(0, len(ret), 2):
                     ret[i] = ImageOps.invert(ret[i])  # invert flow pixel values when flipping
-        return img_group
+            return ret
+        else:
+            return img_group
 
 
 class GroupNormalize(object):
