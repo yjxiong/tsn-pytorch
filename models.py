@@ -265,10 +265,10 @@ TSN Configurations:
         kernel_size = params[0].size()
         if not keep_rgb:
             new_kernel_size = kernel_size[:1] + (3 * self.new_length,) + kernel_size[2:]
-            new_kernels = params[0].data.mean(dim=1).expand(new_kernel_size).contiguous()
+            new_kernels = params[0].data.mean(dim=1, keepdim=True).expand(new_kernel_size).contiguous()
         else:
             new_kernel_size = kernel_size[:1] + (3 * self.new_length,) + kernel_size[2:]
-            new_kernels = torch.cat((params[0].data, params[0].data.mean(dim=1).expand(new_kernel_size).contiguous()),
+            new_kernels = torch.cat((params[0].data, params[0].data.mean(dim=1, keepdim=True).expand(new_kernel_size).contiguous()),
                                     1)
             new_kernel_size = kernel_size[:1] + (3 + 3 * self.new_length,) + kernel_size[2:]
 
