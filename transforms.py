@@ -179,8 +179,8 @@ class GroupMultiScaleCrop(object):
 
     @staticmethod
     def fill_fix_offset(more_fix_crop, image_w, image_h, crop_w, crop_h):
-        w_step = (image_w - crop_w) / 4
-        h_step = (image_h - crop_h) / 4
+        w_step = (image_w - crop_w) // 4
+        h_step = (image_h - crop_h) // 4
 
         ret = list()
         ret.append((0, 0))  # upper left
