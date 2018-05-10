@@ -256,7 +256,7 @@ TSN Configurations:
         # Torch models are usually defined in a hierarchical way.
         # nn.modules.children() return all sub modules in a DFS manner
         modules = list(self.base_model.modules())
-        first_conv_idx = filter(lambda x: isinstance(modules[x], nn.Conv2d), list(range(len(modules))))[0]
+        first_conv_idx = list(filter(lambda x: isinstance(modules[x], nn.Conv2d), list(range(len(modules)))))[0]
         conv_layer = modules[first_conv_idx]
         container = modules[first_conv_idx - 1]
 
