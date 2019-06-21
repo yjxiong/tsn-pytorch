@@ -1,6 +1,6 @@
 # TSN-Pytorch
 
-**We have recently [MMAction](https://github.com/open-mmlab/mmaction), a full-fledged action understanding toolbox based on PyTorch. It includes implementation for TSN as well as other STOA frameworks for various tasks. The lessons we learned in this repo are incorporated into MMAction to make it bettter. We highly recommend you switch to it. This repo will remain here for historical references.**.
+**We have recently [MMAction](https://github.com/open-mmlab/mmaction), a full-fledged action understanding toolbox based on PyTorch. It includes implementation for TSN as well as other STOA frameworks for various tasks. The lessons we learned in this repo are incorporated into MMAction to make it bettter. We highly recommend you switch to it. This repo will remain here for historical references.**
 
 **Note**: always use `git clone --recursive https://github.com/yjxiong/tsn-pytorch` to clone this project. 
 Otherwise you will not be able to use the inception series CNN archs. 
